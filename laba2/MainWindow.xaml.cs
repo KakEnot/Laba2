@@ -22,8 +22,9 @@ namespace laba2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var q = WorkWithDocument.FileUpload();
-            TableData.ItemsSource = q;
+            TableData.ItemsSource = DocumentService.FileUpload();
+            TableData.IsReadOnly = true;
+            TableData.AutoGenerateColumns = false;
         }
        
 
