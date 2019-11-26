@@ -20,11 +20,11 @@ namespace laba2
         public string Description { get; set; }
         public string SourceOfThreat { get; set; } //Внешний/внутренний или нет вообще
         public string ObjectOfInfluence { get; set; } // Объект воздействия
-        public bool IntegrityViolation { get; set; } //Нарушение целостности
-        public bool Accessibility { get; set; } //Нарушение доступности
-        public bool PrivacyViolation { get; set; } //Нарушение конфиденциальности
+        public string IntegrityViolation { get; set; } //Нарушение целостности
+        public string Accessibility { get; set; } //Нарушение доступности
+        public string PrivacyViolation { get; set; } //Нарушение конфиденциальности
 
-        public Threat(int id, string name,string description, string sourceofthreat, string objectofinfluence,bool privacyViolation, bool integrityViolation, bool accessibility)
+        public Threat(int id, string name,string description, string sourceofthreat, string objectofinfluence, string privacyViolation, string integrityViolation, string accessibility)
         {
             Count++;
             Id = id;
@@ -37,7 +37,7 @@ namespace laba2
             Accessibility = accessibility;
 
         }
-        public static string FileUpload()
+        public static List<Threat> FileUpload()
         {
             using (WebClient client = new WebClient())
             {
@@ -46,10 +46,10 @@ namespace laba2
             }
            return Parsexlsx();
         }
-        public static string Parsexlsx()
+        public static List<Threat> Parsexlsx()
         {
             List<string> excelData = new List<string>();
-            byte[] bin = File.ReadAllBytes("C:\\Users\\Пушистая булка\\source\\repos\\laba2\\laba2\\bin\\Debug\\TableData.xlsx");
+            byte[] bin = File.ReadAllBytes("C:\\Users\\Admin\\source\\repos\\laba2\\laba2\\bin\\Debug\\TableData.xlsx");//"C:\\Users\\Пушистая булка\\source\\repos\\laba2\\laba2\\bin\\Debug\\TableData.xlsx");
             using (MemoryStream stream = new MemoryStream(bin))
             {
                 using (ExcelPackage excelPackage = new ExcelPackage(stream))
@@ -66,13 +66,16 @@ namespace laba2
                                 //add the cell data to the List - добавить данные ячейки в список
                                 if (worksheet.Cells[i, j].Value != null)
                                 {
-                                    excelData.Add(worksheet.Cells[i, j].Value.ToString());
+                                    excelData.Add(worksheet.Cells[i, j].Value.ToString()+"$");
                                 }
                                 else
                                 {
                                     excelData.Add("-");
                                 }
+
                             }
+                            excelData.Add("#");
+
                         }
                     }
                 }
@@ -84,12 +87,38 @@ namespace laba2
             }
                 
             List<Threat> thr = new List<Threat>();
-            while(excelData.Count!=0)
+            string str = "";
+            for (int i = 0; i < excelData.Count; i++)
             {
-                
+                str = str + excelData[i];
             }
-           
-            return "";
+            string [] infoForExemplar = new string[str.Split('#').Length];
+            infoForExemplar = str.Split('#');
+
+
+            for (int i = 0; i < infoForExemplar.Length; i++)
+            {
+                string str1 = "";
+                for (int j = 0; j < infoForExemplar[i].Length; j++)
+                {
+                    str1 = str1 + infoForExemplar[i][j];
+                }
+
+                string[] infoThread = new string[str1.Split('$').Length];
+                infoThread = str1.Split('$');
+                int id = Convert.ToInt32(infoThread[1]);
+                string name = infoThread[2];
+                string description = infoThread[3];
+                string sourceofthreat = infoThread[4];
+                string objectofinfluence = infoThread[5];
+                string privacyViolation= infoThread[6];
+                string integrityViolation = infoThread[7];
+                string accessibility = infoThread[8];
+                Threat threat = new Threat(id,name,description,sourceofthreat,objectofinfluence,privacyViolation,integrityViolation,accessibility );
+                thr.Add(threat);
+
+            }
+                        return thr;
         }
 
 

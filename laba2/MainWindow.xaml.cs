@@ -23,7 +23,7 @@ namespace laba2
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var q = Threat.FileUpload();
-            SashaPipiska.ItemsSource = q.Split('%');
+            TableThreat.ItemsSource = q; // что тут сделать если q =Это лист с угрозами ??? 
         }
        
 
