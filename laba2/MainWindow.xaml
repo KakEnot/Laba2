@@ -8,10 +8,8 @@
         Title="MainWindow" Height="589.006" Width="992.016">
     <Grid>
         <Button x:Name="button1" Background="GreenYellow" Margin="16,29,828,481" Content="горшочек, вари!" Click="Button_Click"/>
-        <DataGrid Name="SashaPipiska" HorizontalAlignment="Left" Height="394" Margin="92,132,0,0" VerticalAlignment="Top" Width="807" SelectionChanged="DataGrid_SelectionChanged">
-            <DataGrid.Columns>
-
-              <DataGridTextColumn/>     </DataGrid.Columns>
+        <DataGrid Name="TableData" HorizontalAlignment="Left" Height="394" Margin="92,132,0,0" VerticalAlignment="Top" Width="807" SelectionChanged="DataGrid_SelectionChanged">
+           
         </DataGrid>
 
     </Grid>
