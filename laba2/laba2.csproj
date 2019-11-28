@@ -63,8 +63,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="InfThreadWindow.xaml.cs">
+      <DependentUpon>InfThreadWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Threat.cs" />
     <Compile Include="DocumentService.cs" />
+    <Page Include="InfThreadWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

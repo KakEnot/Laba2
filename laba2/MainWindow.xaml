@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:laba2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="393.006" Width="834.816">
+        Title="MainWindow" Height="412.506" Width="834.816" ResizeMode="NoResize">
     <Grid>
         <Button x:Name="button1" Background="GreenYellow"  Content="горшочек, вари!" Click="Button_Click" Margin="10,10,0,0" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Width="156"/>
-        <DataGrid Name="TableData" HorizontalAlignment="Center" Height="338" Margin="192,10,0,0" VerticalAlignment="Center" Width="625" SelectionChanged="DataGrid_SelectionChanged">
+        <DataGrid Name="TableData" HorizontalAlignment="Center" Height="338" Margin="194,10,10,36" VerticalAlignment="Center" Width="625" SelectionChanged="DataGrid_SelectionChanged" MouseDoubleClick="TableData_MouseDoubleClick" OpacityMask="Black" BorderBrush="Black" Background="{x:Null}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}">
                     <DataGridTextColumn.ElementStyle>
@@ -22,7 +22,7 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                        </Style> 
+                        </Style>
                     </DataGridTextColumn.ElementStyle>
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
@@ -31,6 +31,16 @@
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
             </DataGrid.Columns>
+
         </DataGrid>
+
+        <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,-10,55,10">
+            <Button  HorizontalAlignment="Left" x:Name="BtnFirst"  VerticalAlignment="Bottom" Width="50" Content="&lt;&lt;" Click="BtnFirst_Click"/>
+            <Button  x:Name="BtnSecond"  VerticalAlignment="Bottom" Width="50" Content="&lt;" Click="BtnSecond_Click"/>
+            <Label x:Name="lblpageInformation" HorizontalAlignment="Left" Width="100" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Height="20" />
+            <Button  HorizontalAlignment="Right" x:Name="BtnThird"  VerticalAlignment="Bottom" Width="50" Content="&gt;" Click="BtnThird_Click"/>
+            <Button  HorizontalAlignment="Right" x:Name="BtnFourth"  VerticalAlignment="Bottom" Width="50" Content="&gt;&gt;" Click="BtnFourth_Click"/>
+            <ComboBox x:Name="cbNumberOfRecords" VerticalAlignment="Bottom" Width="120" SelectedIndex="0" SelectionChanged="cbNumberOfRecords_SelectionChanged" Height="20" />
+        </StackPanel>-->
     </Grid>
 </Window>

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace laba2
 {
-    class Threat
+    public class Threat
     {
         public static int Count { get; set; }
         public int Id { get; set; }
